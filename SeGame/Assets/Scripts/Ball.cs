@@ -14,7 +14,7 @@ public class Ball : MonoBehaviour {
 			rigidbodyBall.AddForce (new Vector2 (-100, 0));
 		
 		}
-	
+			
 	}
 	//碰撞事件
 	void OnCollisionEnter2D(Collision2D col) {
@@ -27,5 +27,24 @@ public class Ball : MonoBehaviour {
 		}
 	
 	}
+
+	void Update() {
+		Vector2 velocity = rigidbodyBall.velocity;
+		if (velocity.x < 9 || velocity.x > -9 && velocity.x != 0) {
+			if (velocity.x > 0) {
+				velocity.x = 10;
+			}
+			if (velocity.x < 0) {
+				velocity.x = -10;
+			}
+
+			rigidbodyBall.velocity = velocity;
+		
+		
+		}
+	
+	
+	}
+
 
 }
