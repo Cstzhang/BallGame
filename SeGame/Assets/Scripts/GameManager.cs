@@ -1,0 +1,62 @@
+﻿using UnityEngine;
+using System.Collections;
+
+public class GameManager : MonoBehaviour {
+	private BoxCollider2D rightWall;
+	private BoxCollider2D leftWall;
+	private BoxCollider2D upWall;
+	private BoxCollider2D downWall;
+
+	public Transform player1;
+	public Transform player2;
+
+	// Use this for initialization
+	void Start () {
+		ResetWall();
+		ResetPlayer();
+	}
+
+	// reset wall
+	void ResetWall() {
+		rightWall = transform.Find ("rightWall").GetComponent<BoxCollider2D> ();
+		leftWall  = transform.Find ("leftWall").GetComponent<BoxCollider2D> ();
+		upWall    = transform.Find ("upWall").GetComponent<BoxCollider2D> ();
+		downWall  = transform.Find ("downWall").GetComponent<BoxCollider2D> ();
+		print ("hello it is me ");
+//		Vector3 upWallPosition = Camera.main.ScreenToWorldPoint (new Vector2 (Screen.width / 2, Screen.height));
+//		upWall.transform.position = upWallPosition; 
+//		//upWall width
+//		float width =  Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height)).x * 2;
+//		upWall.size = new Vector2 (width, 1);
+//		//Y +0.5
+//		upWall.transform.position = upWallPosition +  new Vector3(0,0.5f,0);
+
+		// 屏幕右上角未知
+		Vector3 tmpPosition = Camera.main.ScreenToWorldPoint(new Vector2(Screen.width,Screen.height));
+		//upWall
+		upWall.transform.position = new Vector3(0,tmpPosition.y+0.5f,0);
+		upWall.size = new Vector2 (tmpPosition.x * 2, 1);
+		//downWall
+		downWall.transform.position = new Vector3(0,-tmpPosition.y-0.5f,0);
+		downWall.size = new Vector2 (tmpPosition.x * 2, 1);
+		//rightWall
+		rightWall.transform.position = new Vector3(tmpPosition.x+0.5f,0,0);
+		rightWall.size = new Vector2 (1, tmpPosition.y*2);
+		//leftWall
+		leftWall.transform.position = new Vector3(-tmpPosition.x-0.5f,0,0);
+		leftWall.size =new Vector2 (1, tmpPosition.y*2);
+
+	}
+
+	// reset player position
+	void ResetPlayer() {
+		Vector3 player1Position = Camera.main.ScreenToWorldPoint(new Vector3(100,Screen.height/2,0));
+		player1Position.z = 0;
+		player1.position = player1Position;
+
+		Vector3 player2Position = Camera.main.ScreenToWorldPoint(new Vector3(Screen.width-100,Screen.height/2,0));
+		player2Position.z = 0;
+		player2.position = player2Position;
+
+	}
+}
