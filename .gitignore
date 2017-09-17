@@ -32,3 +32,5 @@ sysinfo.txt
 # Builds
 *.apk
 *.unitypackage
+
+SeGame/Temp/__Backupscenes/0.backup
