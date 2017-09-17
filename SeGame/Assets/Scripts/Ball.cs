@@ -25,6 +25,17 @@ public class Ball : MonoBehaviour {
 			velocity.y = velocity.y/2 + col.rigidbody.velocity.y/2;
 			rigidbodyBall.velocity = velocity;
 		}
+
+		if (col.gameObject.name == "rightWall" || col.gameObject.name == "leftWall") {
+			GameManager.Instance.ChangeScore (col.gameObject.name);		
+		}
+
+
+
+
+
+
+
 	
 	}
 
@@ -37,7 +48,6 @@ public class Ball : MonoBehaviour {
 			if (velocity.x < 0) {
 				velocity.x = -10;
 			}
-
 			rigidbodyBall.velocity = velocity;
 		
 		

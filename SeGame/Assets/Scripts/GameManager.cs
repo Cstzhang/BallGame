@@ -1,14 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour {
+	//外界只能访问
+	private static GameManager _instance;
+	public static GameManager Instance {
+		get { 
+			return _instance;
+		}
+	}
+
 	private BoxCollider2D rightWall;
 	private BoxCollider2D leftWall;
 	private BoxCollider2D upWall;
 	private BoxCollider2D downWall;
+	public Text score1Text;
+	public Text score2Text;
+
 
 	public Transform player1;
 	public Transform player2;
+
+	private int score1;
+	private int score2;
+
+	void Awake() {
+		_instance = this;
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -59,4 +78,20 @@ public class GameManager : MonoBehaviour {
 		player2.position = player2Position;
 
 	}
+	// 计分
+	public void ChangeScore(string wallName) {
+		if (wallName == "leftWall") {
+			score2++;
+		
+		} else if (wallName == "rightWall") {
+			score1++;
+		
+		}
+		score1Text.text = score1.ToString();
+		score2Text.text = score2.ToString();
+
+	}
+
+
+
 }
