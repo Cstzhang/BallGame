@@ -6,10 +6,10 @@ public class PlayerController : MonoBehaviour {
 	public KeyCode downKey;
 	public float speed = 10;
 	private Rigidbody2D firstRigidbody2d;
-	private AudioSource audio;
+	private AudioSource gameAudio;
 	// Use this for initialization
 	void Start () {
-		audio = GetComponent<AudioSource> ();
+		gameAudio = GetComponent<AudioSource> ();
 		firstRigidbody2d = GetComponent<Rigidbody2D> ();
 	}
 	
@@ -31,8 +31,8 @@ public class PlayerController : MonoBehaviour {
 	}
 	//碰撞播放声音
 	void OnCollisionEnter2D() {
-		audio.pitch = Random.Range (0.8f, 1.2f);
-		audio.Play ();
+		gameAudio.pitch = Random.Range (0.8f, 1.2f);
+		gameAudio.Play ();
 
 	}
 

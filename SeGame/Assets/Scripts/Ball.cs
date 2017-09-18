@@ -7,13 +7,7 @@ public class Ball : MonoBehaviour {
 	// start speed
 	void Start () {
 		rigidbodyBall = GetComponent<Rigidbody2D> ();
-		int number = Random.Range (0, 2);
-		if (number == 1) {
-			rigidbodyBall.AddForce (new Vector2 (100, 0));
-		} else {
-			rigidbodyBall.AddForce (new Vector2 (-100, 0));
-		
-		}
+		GoBall ();
 			
 	}
 	//碰撞事件
@@ -30,13 +24,6 @@ public class Ball : MonoBehaviour {
 			GameManager.Instance.ChangeScore (col.gameObject.name);		
 		}
 
-
-
-
-
-
-
-	
 	}
 
 	void Update() {
@@ -55,6 +42,27 @@ public class Ball : MonoBehaviour {
 	
 	
 	}
+	//球重置
+	public void Reset(){
+		//位置
+		transform.position = Vector3.zero;
+	    //速度重置
+		GoBall ();
+
+	}
+
+	void GoBall(){
+
+		int number = Random.Range (0, 2);
+		if (number == 1) {
+			rigidbodyBall.AddForce (new Vector2 (100, 0));
+		} else {
+			rigidbodyBall.AddForce (new Vector2 (-100, 0));
+
+		}
+
+	}
+
 
 
 }

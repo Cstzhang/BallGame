@@ -2,14 +2,14 @@
 using System.Collections;
 
 public class Wall : MonoBehaviour {
-	private AudioSource audio;
+	private AudioSource gameAudio;
 	// Use this for initialization
 	void Start () {
-		audio = GetComponent<AudioSource> ();
+		gameAudio = GetComponent<AudioSource> ();
 	}
 	
 	//碰撞播放声音
 	void OnCollisionEnter2D() {
-		audio.Play ();
+		gameAudio.Play ();
 	}
 }

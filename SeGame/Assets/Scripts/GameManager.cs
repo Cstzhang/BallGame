@@ -92,6 +92,17 @@ public class GameManager : MonoBehaviour {
 
 	}
 
+	//重置
+	public void Reset() {
+		score1 = 0;
+		score2 = 0;
+		score1Text.text = score1.ToString();
+		score2Text.text = score2.ToString();
+		GameObject.Find ("Ball").SendMessage ("Reset");
+
+	}
+
+
 
 
 }
