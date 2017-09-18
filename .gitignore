@@ -34,3 +34,11 @@ sysinfo.txt
 *.unitypackage
 
 
+
+SeGame/Library
+
+SeGame/Temp
+
+SeGame/Temp/bin/Debug
+
+SeGame/Temp/
